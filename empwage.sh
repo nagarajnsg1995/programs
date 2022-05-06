@@ -1,21 +1,33 @@
 #!bin/bash -x
 
-isparttime=1;
-isfulltime=2;
-emprateperhr=20;
+ispartTime=1;
+isFullTime=2;
+empRateperHr=20;
+workingDays=0;
+totalsalary=0;
 
-empcheck=$(( RANDOM%3 ));
+while (( workingDays<=20 ))
+do
+        empcheck=$((RANDOM%3))
+        case $empcheck in
+                $isFullTime)
+                        empHrs=8;;
+                $ispartTime)
+                        empHrs=4;;
+                *)
+                        empHrs=0;;
+        esac
 
-case $empcheck in
-$isfulltime)
-        emphrs=8;;
-$isparttime)
-        emphrs=4;;
-        *)
-        emphrs=0;;
-esac
-salary=$(($emphrs * $emprateperhr));
-echo "$salary"
+salary=$(($empHrs * $empRateperHr));
+totalsalary=$(($totalsalary + $salary));
+
+
+
+echo    "Employee has earned $totalsalary in a month";
+workingDays=$(( $workingDays+1 ))
+
+done
+
 
 
 
