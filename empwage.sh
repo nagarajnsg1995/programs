@@ -2,7 +2,7 @@
 
 present=1;
 emprateperhr=20;
-emphrs=8;
+emphrs=4;
 randomcheck=$((RANDOM%2))
 if [ $present -eq $randomcheck ]
 then
